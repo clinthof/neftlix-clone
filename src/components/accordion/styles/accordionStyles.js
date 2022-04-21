@@ -15,8 +15,9 @@ const Inner = styled.div`
 
 const Item = styled.div`
   color: white;
+  max-width: 800px;
+  margin: auto;
   margin-bottom: 10px;
-  max-width: 670px;
 
   &:first-of-type {
     margin-top: 3em;
