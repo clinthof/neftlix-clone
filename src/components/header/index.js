@@ -1,11 +1,25 @@
-
+import { Background, Container, Logo, ButtonLink, } from './styles/headerStyles';
+import { Link as ReactRouterLink } from 'react-router-dom';
 
 const Header = ({ bg = true, children, ...restProps }) => {
-  return (
-    <>
+  return bg ? <Background {...restProps}>{children}</Background> : children;
+};
 
-    </>
+Header.Frame = function HeaderFrame({ children, ...restProps }) {
+  return <Container {...restProps}>{children}</Container>;
+};
+
+Header.Logo = function HeaderLogo({ to, ...restProps }) {
+  return (
+    <ReactRouterLink to={to}>
+      <Logo {...restProps}/>
+    </ReactRouterLink>
   );
 };
+
+Header.ButtonLink = function HeaderButtonLink({ children, ...restProps }) {
+  return <ButtonLink {...restProps}>{children}</ButtonLink>
+};
+
 
 export default Header;
