@@ -70,7 +70,7 @@ const Text = styled.div`
   font-size: 19.2px;
   color: white;
   text-align: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
 
   @media (max-width: 600px) {
     font-size: 18px;
