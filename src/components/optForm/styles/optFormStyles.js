@@ -21,6 +21,10 @@ const Input = styled.input`
   height: 60px;
   box-sizing: border-box;
   color: #333;
+  
+  &:focus {
+    outline: none;
+  }
 
   @media (max-width: 1000px) {
     height: 50px;

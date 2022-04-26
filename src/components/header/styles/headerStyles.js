@@ -5,6 +5,7 @@ const Background = styled.div`
   display: flex;
   flex-direction: column;
   background: url(${({ src }) => (src ? `../images/misc/${src}.jpg` : '../images/misc/home-bg.jpg')}) top left / cover no-repeat;
+  box-shadow: 0 40px 200px rgba(0,0,0,0.9) inset;
 `;
 
 const Frame = styled.div`
