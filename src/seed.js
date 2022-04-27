@@ -208,7 +208,7 @@ export function seedDatabase(firebase) {
     maturity: '12',
     slug: 'good-will-hunting',
   });
-  firebase.firestore().collection('series').add({
+  firebase.firestore().collection('films').add({
     id: getUUID(),
     title: 'Forrest Gump',
     description:
