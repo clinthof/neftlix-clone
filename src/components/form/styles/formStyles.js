@@ -34,6 +34,10 @@ const Text = styled.p`
   color: #737373;
   font-size: 16px;
   font-weight: 500;
+
+  @media (max-width: 600px) {
+    text-align: center;
+  }
 `;
 
 const Subtext = styled.p`
@@ -41,6 +45,10 @@ const Subtext = styled.p`
   font-size: 13px;
   line-height: normal;
   color: #8c8c8c;
+
+  @media (max-width: 600px) {
+    text-align: center;
+  }
 `;
 
 const Link = styled(ReactRouterLink)`
