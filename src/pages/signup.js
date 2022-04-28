@@ -10,31 +10,25 @@ const SignUp = () => {
 
   const { firebase } = useContext(FirebaseContext);
 
-  // const [userInfo, setUserInfo] = useState({ name: '', email: '', password: '' });
+  const [state, setState] = useState({
+    name: '', email: '', password: '', error: ''
+  });
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-
-  const isInvalid = name === '' || email === '' || password === '';
+  const isInvalid = state.name === '' || state.email === '' || state.password === '';
 
   const handleSignUp = e => {
     e.preventDefault();
 
     firebase
       .auth()
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(state.email, state.password)
       .then(result => result.user.updateProfile({
-        displayName: name,
+        displayName: state.name,
         photoURL: Math.floor(Math.random() * 5) + 1,
       }))
       .then(() => history.push(ROUTES.BROWSE))
       .catch(err => {
-        setName('');
-        setEmail('');
-        setPassword('');
-        setError(err.message);
+        setState({ name: '', email: '', password: '', error: err.message });
       });
   };
 
@@ -43,24 +37,24 @@ const SignUp = () => {
       <HeaderContainer>
         <Form>
           <Form.Title>Sign Up</Form.Title>
-          {error && <Form.Error>{error}</Form.Error>}
+          {state.error && <Form.Error>{state.error}</Form.Error>}
           <Form.Base onSubmit={e => handleSignUp(e)} method='POST'>
             <Form.Input
               placeholder='First name'
-              value={name} 
-              onChange={({target}) => setName(target.value)}
+              value={state.name}
+              onChange={({ target }) => setState({ ...state, name: target.value })}
             />
             <Form.Input
               placeholder='Email address'
-              value={email} 
-              onChange={({target}) => setEmail(target.value)}
+              value={state.email} 
+              onChange={({target}) => setState({ ...state, email: target.value })}
             />
             <Form.Input
               placeholder='Password'
               type='password'
               autoComplete='off'
-              value={password} 
-              onChange={({target}) => setPassword(target.value)}
+              value={state.password} 
+              onChange={({target}) => setState({ ...state, password: target.value })}
             />
             <Form.Submit disabled={isInvalid} type='submit'>Sign Up</Form.Submit>
           </Form.Base>
