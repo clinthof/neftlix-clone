@@ -11,9 +11,7 @@ root.render(
   <> 
     <FirebaseContext.Provider value={{ firebase }}>
       <GlobalStyles />  
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <App />
     </FirebaseContext.Provider>
   </>
 );
